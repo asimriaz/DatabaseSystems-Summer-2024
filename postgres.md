@@ -51,7 +51,7 @@ insert into emp (EMPNO, ENAME, JOB, MGR, HIREDATE, SAL, COMM, DEPTNO)
   select 7521, 'WARD',   'SALESMAN',  7698, to_date('22-2-1981','dd-mm-yyyy'),     1250,  500, 30 from dummy union all
   select 7654, 'MARTIN', 'SALESMAN',  7698, to_date('28-9-1981','dd-mm-yyyy'),     1250, 1400, 30 from dummy union all
   select 7844, 'TURNER', 'SALESMAN',  7698, to_date('8-9-1981','dd-mm-yyyy'),      1500,    0, 30 from dummy union all
-  select 7876, 'ADAMS',  'CLERK',     7788, to_date('13-7-87', 'dd-mm-yyyy'),      1100, cast(null as integer), 20 from dummy union all
+  select 7876, 'ADAMS',  'CLERK',     7788, to_date('13-7-1987', 'dd-mm-yyyy'),      1100, cast(null as integer), 20 from dummy union all
   select 7900, 'JAMES',  'CLERK',     7698, to_date('3-12-1981','dd-mm-yyyy'),      950, cast(null as integer), 30 from dummy union all
   select 7934, 'MILLER', 'CLERK',     7782, to_date('23-1-1982','dd-mm-yyyy'),     1300, cast(null as integer), 10 from dummy;
 insert into salgrade
