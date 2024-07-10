@@ -5,62 +5,63 @@
 ## SCOTT Schema
 ```sql
 -- Script to create Oracle's "SCOTT" schema with tables
--- EMP, DEPT, BONUS, SALGRADE, DUMMY. Originally Oracle's demobld.sql.
+-- EMP, DEPT, BONUS, SALGRADE. Originally Oracle's. 
 --
--- In a format suitable for pasting into SQL Fiddle for PostgreSQL:
--- http://sqlfiddle.com/#!17
-create table dept(
-  deptno   decimal(2,0) not null,
-  dname    varchar(14),
-  loc      varchar(13));
-create table emp(
-  empno    decimal(4,0) not null,
-  ename    varchar(10),
-  job      varchar(9),
-  mgr      decimal(4,0),
-  hiredate date,
-  sal      decimal(7,2),
-  comm     decimal(7,2),  
-  deptno   decimal(2,0) not null);
-create table bonus(
-  ename    varchar(10),
-  job      varchar(9),
-  sal      decimal,
-  comm     decimal);
-create table salgrade(
-  grade    decimal,
-  losal    decimal,
-  hisal    decimal);
-create table dummy (
-  dummy    decimal);
-insert into dummy values (0);
-insert into DEPT (DEPTNO, DNAME, LOC)
-  select 10, 'ACCOUNTING', 'NEW YORK' from dummy union all
-  select 20, 'RESEARCH',   'DALLAS'   from dummy union all
-  select 30, 'SALES',      'CHICAGO'  from dummy union all
-  select 40, 'OPERATIONS', 'BOSTON'   from dummy;
-insert into emp (EMPNO, ENAME, JOB, MGR, HIREDATE, SAL, COMM, DEPTNO)
-  select 7839, 'KING',   'PRESIDENT', cast(null as integer), to_date('17-11-1981','dd-mm-yyyy'),    5000, cast(null as integer), 10 from dummy union all
-  select 7698, 'BLAKE',  'MANAGER',   7839, to_date('1-5-1981','dd-mm-yyyy'),      2850, cast(null as integer), 30 from dummy union all
-  select 7782, 'CLARK',  'MANAGER',   7839, to_date('9-6-1981','dd-mm-yyyy'),      2450, cast(null as integer), 10 from dummy union all
-  select 7566, 'JONES',  'MANAGER',   7839, to_date('2-4-1981','dd-mm-yyyy'),      2975, cast(null as integer), 20 from dummy union all
-  select 7788, 'SCOTT',  'ANALYST',   7566, to_date('13-7-1987','dd-mm-YYYY'),     3000, cast(null as integer), 20 from dummy union all
-  select 7902, 'FORD',   'ANALYST',   7566, to_date('3-12-1981','dd-mm-yyyy'),     3000, cast(null as integer), 20 from dummy union all
-  select 7369, 'SMITH',  'CLERK',     7902, to_date('17-12-1980','dd-mm-yyyy'),     800, cast(null as integer), 20 from dummy union all
-  select 7499, 'ALLEN',  'SALESMAN',  7698, to_date('20-2-1981','dd-mm-yyyy'),     1600,  300, 30 from dummy union all
-  select 7521, 'WARD',   'SALESMAN',  7698, to_date('22-2-1981','dd-mm-yyyy'),     1250,  500, 30 from dummy union all
-  select 7654, 'MARTIN', 'SALESMAN',  7698, to_date('28-9-1981','dd-mm-yyyy'),     1250, 1400, 30 from dummy union all
-  select 7844, 'TURNER', 'SALESMAN',  7698, to_date('8-9-1981','dd-mm-yyyy'),      1500,    0, 30 from dummy union all
-  select 7876, 'ADAMS',  'CLERK',     7788, to_date('13-7-1987', 'dd-mm-yyyy'),      1100, cast(null as integer), 20 from dummy union all
-  select 7900, 'JAMES',  'CLERK',     7698, to_date('3-12-1981','dd-mm-yyyy'),      950, cast(null as integer), 30 from dummy union all
-  select 7934, 'MILLER', 'CLERK',     7782, to_date('23-1-1982','dd-mm-yyyy'),     1300, cast(null as integer), 10 from dummy;
-insert into salgrade
-  select 1,  700, 1200 from dummy union all
-  select 2, 1201, 1400 from dummy union all
-  select 3, 1401, 2000 from dummy union all
-  select 4, 2001, 3000 from dummy union all
-  select 5, 3001, 9999 from dummy;
-commit;
+CREATE TABLE DEPT
+       (DEPTNO INTEGER PRIMARY KEY,
+	DNAME VARCHAR(14) ,
+	LOC VARCHAR(13) ) ;
+
+CREATE TABLE EMP
+       (EMPNO INTEGER PRIMARY KEY,
+	ENAME VARCHAR(10),
+	JOB VARCHAR(9),
+	MGR DECIMAL(4,0),
+	HIREDATE DATE,
+	SAL DECIMAL(7,2),
+	COMM DECIMAL(7,2),
+	DEPTNO INTEGER REFERENCES DEPT);
+
+INSERT INTO DEPT VALUES 
+    (10,'ACCOUNTING','NEW YORK'),
+    (20,'RESEARCH','DALLAS'),
+    (30,'SALES','CHICAGO'),
+    (40,'OPERATIONS','BOSTON');
+
+INSERT INTO emp VALUES
+	(7839, 'KING', 'PRESIDENT', NULL, '1981-11-17', 5000.00, NULL, 10),
+	(7698, 'BLAKE', 'MANAGER', 7839, '1981-05-01', 2850.00, NULL, 30),
+	(7782, 'CLARK', 'MANAGER', 7839, '1981-06-09', 2450.00, NULL, 10),
+	(7788, 'SCOTT', 'ANALYST', 7566, '1987-07-13', 3000.00, NULL, 20),
+	(7566, 'JONES', 'MANAGER', 7839, '1981-04-02', 2975.00, NULL, 20),
+	(7902, 'FORD', 'ANALYST', 7566, '1981-12-03', 3000.00, NULL, 20),
+	(7369, 'SMITH', 'CLERK', 7902, '1980-12-17', 800.00, NULL, 20),
+	(7499, 'ALLEN', 'SALESMAN', 7698, '1981-02-20', 1600.00, 300.00, 30),
+	(7521, 'WARD', 'SALESMAN', 7698, '1981-02-22', 1250.00, 500.00, 30),
+	(7654, 'MARTIN', 'SALESMAN', 7698, '1981-09-28', 1250.00, 1400.00, 30),
+	(7844, 'TURNER', 'SALESMAN', 7698, '1981-09-08', 1500.00, 0.00, 30),
+	(7876, 'ADAMS', 'CLERK', 7788, '1987-07-13', 1100.00, NULL, 20),
+	(7900, 'JAMES', 'CLERK', 7698, '1981-12-03', 950.00, NULL, 30),
+	(7934, 'MILLER', 'CLERK', 7782, '1982-01-23', 1300.00, NULL, 10);
+
+CREATE TABLE BONUS (
+	ENAME VARCHAR(10),
+	JOB VARCHAR(9),
+	SAL INTEGER,
+	COMM INTEGER);
+
+CREATE TABLE SALGRADE ( 
+	GRADE INTEGER,
+	LOSAL INTEGER,
+	HISAL INTEGER );
+
+INSERT INTO SALGRADE VALUES
+    (1,700,1200),
+    (2,1201,1400),
+    (3,1401,2000),
+    (4,2001,3000),
+    (5,3001,9999);
+
 ```
 
 ## HR Schema
