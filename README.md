@@ -1,0 +1,1 @@
+https://www.espncricinfo.com/series/australia-in-pakistan-2021-22-1288300/pakistan-vs-australia-2nd-odi-1288314/full-scorecard
