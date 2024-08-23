@@ -54,3 +54,6 @@ services:
       PGADMIN_CONFIG_PROXY_X_PREFIX_COUNT: 1      
     ports:
       - "5050:80"      
+    depends_on:
+        postgresdb:
+            condition: service_healthy        
