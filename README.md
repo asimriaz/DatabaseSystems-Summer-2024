@@ -15,4 +15,4 @@ https://github.com/asimriaz/DatabaseSystems-Summer-2024/blob/script/EXAMS.zip
 10. Specific student Datasheet Semester GPA and CGPA
 11. Find students with higher failure rate Year / Semester / Batch
 
-#### NOTE: All students of Theory and Lab should be divided into 11 groups
+#### NOTE: All students of Theory + Lab should be divided into 11 groups
