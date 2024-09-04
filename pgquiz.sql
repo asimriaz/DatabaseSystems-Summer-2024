@@ -1,101 +1,6 @@
-pg_dump: last built-in OID is 16383
-pg_dump: reading extensions
-pg_dump: identifying extension members
-pg_dump: reading schemas
-pg_dump: reading user-defined tables
-pg_dump: reading user-defined functions
-pg_dump: reading user-defined types
-pg_dump: reading procedural languages
-pg_dump: reading user-defined aggregate functions
-pg_dump: reading user-defined operators
-pg_dump: reading user-defined access methods
-pg_dump: reading user-defined operator classes
-pg_dump: reading user-defined operator families
-pg_dump: reading user-defined text search parsers
-pg_dump: reading user-defined text search templates
-pg_dump: reading user-defined text search dictionaries
-pg_dump: reading user-defined text search configurations
-pg_dump: reading user-defined foreign-data wrappers
-pg_dump: reading user-defined foreign servers
-pg_dump: reading default privileges
-pg_dump: reading user-defined collations
-pg_dump: reading user-defined conversions
-pg_dump: reading type casts
-pg_dump: reading transforms
-pg_dump: reading table inheritance information
-pg_dump: reading event triggers
-pg_dump: finding extension tables
-pg_dump: finding inheritance relationships
-pg_dump: reading column info for interesting tables
-pg_dump: finding table default expressions
-pg_dump: flagging inherited columns in subtables
-pg_dump: reading partitioning data
-pg_dump: reading indexes
-pg_dump: flagging indexes in partitioned tables
-pg_dump: reading extended statistics
-pg_dump: reading constraints
-pg_dump: reading triggers
-pg_dump: reading rewrite rules
-pg_dump: reading policies
-pg_dump: reading row-level security policies
-pg_dump: reading publications
-pg_dump: reading publication membership of tables
-pg_dump: reading publication membership of schemas
-pg_dump: reading subscriptions
-pg_dump: reading dependency data
-pg_dump: saving encoding = UTF8
-pg_dump: saving standard_conforming_strings = on
-pg_dump: saving search_path = 
---
--- PostgreSQL database dump
---
-
--- Dumped from database version 16.3 (Debian 16.3-1.pgdg120+1)
--- Dumped by pg_dump version 16.3 (Debian 16.3-1.pgdg120+1)
-
--- Started on 2024-09-04 01:38:54 UTC
-
-SET statement_timeout = 0;
-SET lock_timeout = 0;
-SET idle_in_transaction_session_timeout = 0;
-SET client_encoding = 'UTF8';
-SET standard_conforming_strings = on;
-SELECT pg_catalog.set_config('search_path', '', false);
-SET check_function_bodies = false;
-SET xmloption = content;
-SET client_min_messages = warning;
-SET row_security = off;
-
-pg_dump: creating SCHEMA "public"
---
--- TOC entry 4 (class 2615 OID 2200)
--- Name: public; Type: SCHEMA; Schema: -; Owner: pg_database_owner
---
-
--- CREATE SCHEMA public;
-
-
-ALTER SCHEMA public OWNER TO pg_database_owner;
-
--- pg_dump: creating COMMENT "SCHEMA public"
---
--- TOC entry 3389 (class 0 OID 0)
--- Dependencies: 4
--- Name: SCHEMA public; Type: COMMENT; Schema: -; Owner: pg_database_owner
---
-
--- COMMENT ON SCHEMA public IS 'standard public schema';
-
-
-pg_dump: creating TABLE "attempt"
 SET default_tablespace = '';
 
 SET default_table_access_method = heap;
-
---
--- TOC entry 221 (class 1259 OID 16419)
--- Name: attempt; Type: TABLE; Schema: public; Owner: postgres
---
 
 CREATE TABLE attempt (
     attid integer NOT NULL,
@@ -107,13 +12,6 @@ CREATE TABLE attempt (
 );
 
 
-ALTER TABLE attempt OWNER TO postgres;
-
-pg_dump: creating TABLE "options"
---
--- TOC entry 219 (class 1259 OID 16404)
--- Name: options; Type: TABLE; Schema: public; Owner: postgres
---
 
 CREATE TABLE options (
     oid integer NOT NULL,
@@ -123,13 +21,7 @@ CREATE TABLE options (
 );
 
 
-ALTER TABLE options OWNER TO postgres;
 
-pg_dump: creating TABLE "question"
---
--- TOC entry 216 (class 1259 OID 16389)
--- Name: question; Type: TABLE; Schema: public; Owner: postgres
---
 
 CREATE TABLE question (
     qid integer NOT NULL,
@@ -139,13 +31,7 @@ CREATE TABLE question (
 );
 
 
-ALTER TABLE question OWNER TO postgres;
 
-pg_dump: creating SEQUENCE "question_qid_seq"
---
--- TOC entry 215 (class 1259 OID 16388)
--- Name: question_qid_seq; Type: SEQUENCE; Schema: public; Owner: postgres
---
 
 CREATE SEQUENCE question_qid_seq
     AS integer
@@ -156,23 +42,10 @@ CREATE SEQUENCE question_qid_seq
     CACHE 1;
 
 
-ALTER SEQUENCE question_qid_seq OWNER TO postgres;
 
-pg_dump: creating SEQUENCE OWNED BY "question_qid_seq"
---
--- TOC entry 3390 (class 0 OID 0)
--- Dependencies: 215
--- Name: question_qid_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
---
 
 ALTER SEQUENCE question_qid_seq OWNED BY question.qid;
 
-
-pg_dump: creating TABLE "result"
---
--- TOC entry 222 (class 1259 OID 16424)
--- Name: result; Type: TABLE; Schema: public; Owner: postgres
---
 
 CREATE TABLE result (
     rid integer NOT NULL,
@@ -183,13 +56,6 @@ CREATE TABLE result (
 );
 
 
-ALTER TABLE result OWNER TO postgres;
-
-pg_dump: creating TABLE "student"
---
--- TOC entry 220 (class 1259 OID 16414)
--- Name: student; Type: TABLE; Schema: public; Owner: postgres
---
 
 CREATE TABLE student (
     regno character varying(10) NOT NULL,
@@ -197,13 +63,6 @@ CREATE TABLE student (
 );
 
 
-ALTER TABLE student OWNER TO postgres;
-
-pg_dump: creating TABLE "test"
---
--- TOC entry 218 (class 1259 OID 16398)
--- Name: test; Type: TABLE; Schema: public; Owner: postgres
---
 
 CREATE TABLE test (
     testid integer NOT NULL,
@@ -220,13 +79,6 @@ CREATE TABLE test (
 );
 
 
-ALTER TABLE test OWNER TO postgres;
-
-pg_dump: creating SEQUENCE "test_testid_seq"
---
--- TOC entry 217 (class 1259 OID 16397)
--- Name: test_testid_seq; Type: SEQUENCE; Schema: public; Owner: postgres
---
 
 CREATE SEQUENCE test_testid_seq
     AS integer
@@ -237,43 +89,19 @@ CREATE SEQUENCE test_testid_seq
     CACHE 1;
 
 
-ALTER SEQUENCE test_testid_seq OWNER TO postgres;
 
-pg_dump: creating SEQUENCE OWNED BY "test_testid_seq"
---
--- TOC entry 3391 (class 0 OID 0)
--- Dependencies: 217
--- Name: test_testid_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
---
 
 ALTER SEQUENCE test_testid_seq OWNED BY test.testid;
 
 
-pg_dump: creating DEFAULT "question qid"
---
--- TOC entry 3224 (class 2604 OID 16392)
--- Name: question qid; Type: DEFAULT; Schema: public; Owner: postgres
---
-
 ALTER TABLE ONLY question ALTER COLUMN qid SET DEFAULT nextval('question_qid_seq'::regclass);
 
-
-pg_dump: creating DEFAULT "test testid"
---
--- TOC entry 3225 (class 2604 OID 16401)
--- Name: test testid; Type: DEFAULT; Schema: public; Owner: postgres
---
 
 ALTER TABLE ONLY test ALTER COLUMN testid SET DEFAULT nextval('test_testid_seq'::regclass);
 
 
---
--- TOC entry 3382 (class 0 OID 16419)
--- Dependencies: 221
--- Data for Name: attempt; Type: TABLE DATA; Schema: public; Owner: postgres
---
 
-pg_dump: processing data for table "attempt"
+-- pg_dump: processing data for table "attempt"
 INSERT INTO attempt VALUES
 	(329, '1732102', 14, 0, '6,20,23,10,32,12,0,27,39,19,5,29,11,36,31,17,8,4,13,9,22,34,25,3,1,7,26,21,15,28,2,37,16,18,35,24,30,14,38,33', NULL),
 	(330, '1612103', 14, 0, '10,19,39,1,11,8,22,9,4,31,5,14,37,13,15,18,36,23,35,29,34,27,26,2,30,6,17,7,25,38,20,3,24,12,33,16,32,28,0,21', NULL),
@@ -428,13 +256,8 @@ INSERT INTO attempt VALUES
 	(1421, '2312104', 14, 0, '11,21,7,26,14,5,34,20,13,0,24,1,39,37,23,12,18,28,10,32,33,17,27,29,31,15,35,38,22,6,8,3,9,36,2,4,16,30,19,25', '2023-02-02 12:53:54');
 
 
---
--- TOC entry 3380 (class 0 OID 16404)
--- Dependencies: 219
--- Data for Name: options; Type: TABLE DATA; Schema: public; Owner: postgres
---
 
-pg_dump: processing data for table "options"
+-- pg_dump: processing data for table "options"
 INSERT INTO options VALUES
 	(1398, 561, 'serial', 1),
 	(1399, 561, 'parallel', 2),
@@ -522,13 +345,8 @@ INSERT INTO options VALUES
 	(1481, 600, 'False', 2);
 
 
---
--- TOC entry 3377 (class 0 OID 16389)
--- Dependencies: 216
--- Data for Name: question; Type: TABLE DATA; Schema: public; Owner: postgres
---
 
-pg_dump: processing data for table "question"
+-- pg_dump: processing data for table "question"
 INSERT INTO question VALUES
 	(561, 'qestions are hidden text no - 561', 1, 14),
 	(562, 'qestions are hidden text no - 562', 1, 14),
@@ -572,13 +390,8 @@ INSERT INTO question VALUES
 	(600, 'qestions are hidden text no - 600', 1, 14);
 
 
---
--- TOC entry 3383 (class 0 OID 16424)
--- Dependencies: 222
--- Data for Name: result; Type: TABLE DATA; Schema: public; Owner: postgres
---
 
-pg_dump: processing data for table "result"
+-- pg_dump: processing data for table "result"
 INSERT INTO result VALUES
 	(15402, 14, '1732102', 567, 3),
 	(15403, 14, '1732102', 581, 1),
@@ -6307,13 +6120,8 @@ INSERT INTO result VALUES
 	(52444, 14, '2312107', 595, 1);
 
 
---
--- TOC entry 3381 (class 0 OID 16414)
--- Dependencies: 220
--- Data for Name: student; Type: TABLE DATA; Schema: public; Owner: postgres
---
 
-pg_dump: processing data for table "student"
+-- pg_dump: processing data for table "student"
 INSERT INTO student VALUES
 	('1612103', 'Ahsan Iftikhar'),
 	('1612117', 'Maryam Liaquat'),
@@ -7461,13 +7269,8 @@ INSERT INTO student VALUES
 	('2212352', 'Hameedullah Khan');
 
 
---
--- TOC entry 3379 (class 0 OID 16398)
--- Dependencies: 218
--- Data for Name: test; Type: TABLE DATA; Schema: public; Owner: postgres
---
 
-pg_dump: processing data for table "test"
+-- pg_dump: processing data for table "test"
 INSERT INTO test VALUES
 	(1, 'Web Technology II', 40, 'DEB35', '2019-06-01 00:00:00', 60, 'Asim Riaz', 'Spring 2019', 'Test 1', 'BS VI ', 0.5),
 	(2, 'Web Technology II', 80, 'E32RN', '2019-06-12 00:00:00', 90, 'Asim Riaz', 'Spring 2019', 'Final', 'BS VI E/F', 0.5),
@@ -7506,69 +7309,29 @@ INSERT INTO test VALUES
 	(35, 'Web Technology I', 40, 'DK94N', '2024-01-25 00:00:00', 20, 'Asim Riaz', 'Spring 2024', 'Test', 'BSCS Elective', 0.5);
 
 
-pg_dump: executing SEQUENCE SET question_qid_seq
---
--- TOC entry 3392 (class 0 OID 0)
--- Dependencies: 215
--- Name: question_qid_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
+-- pg_dump: executing SEQUENCE SET question_qid_seq
 
 SELECT pg_catalog.setval('question_qid_seq', 1, false);
 
 
-pg_dump: executing SEQUENCE SET test_testid_seq
---
--- TOC entry 3393 (class 0 OID 0)
--- Dependencies: 217
--- Name: test_testid_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
+-- pg_dump: executing SEQUENCE SET test_testid_seq
 
 SELECT pg_catalog.setval('test_testid_seq', 1, false);
 
-
-pg_dump: creating CONSTRAINT "question question_pkey"
---
--- TOC entry 3227 (class 2606 OID 16396)
--- Name: question question_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
---
 
 ALTER TABLE ONLY question
     ADD CONSTRAINT question_pkey PRIMARY KEY (qid);
 
 
-pg_dump: creating CONSTRAINT "student student_pkey"
---
--- TOC entry 3231 (class 2606 OID 16418)
--- Name: student student_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
---
-
 ALTER TABLE ONLY student
     ADD CONSTRAINT student_pkey PRIMARY KEY (regno);
 
-
-pg_dump: creating CONSTRAINT "test test_pkey"
---
--- TOC entry 3229 (class 2606 OID 16403)
--- Name: test test_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
---
 
 ALTER TABLE ONLY test
     ADD CONSTRAINT test_pkey PRIMARY KEY (testid);
 
 
-pg_dump: creating FK CONSTRAINT "options options_qid_fkey"
---
--- TOC entry 3232 (class 2606 OID 16409)
--- Name: options options_qid_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
---
-
 ALTER TABLE ONLY options
     ADD CONSTRAINT options_qid_fkey FOREIGN KEY (qid) REFERENCES question(qid);
 
-
--- Completed on 2024-09-04 01:38:54 UTC
-
---
--- PostgreSQL database dump complete
---
 
