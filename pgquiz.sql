@@ -72,22 +72,22 @@ pg_dump: creating SCHEMA "public"
 -- Name: public; Type: SCHEMA; Schema: -; Owner: pg_database_owner
 --
 
-CREATE SCHEMA public;
+-- CREATE SCHEMA public;
 
 
 ALTER SCHEMA public OWNER TO pg_database_owner;
 
-pg_dump: creating COMMENT "SCHEMA public"
+-- pg_dump: creating COMMENT "SCHEMA public"
 --
 -- TOC entry 3389 (class 0 OID 0)
 -- Dependencies: 4
 -- Name: SCHEMA public; Type: COMMENT; Schema: -; Owner: pg_database_owner
 --
 
-COMMENT ON SCHEMA public IS 'standard public schema';
+-- COMMENT ON SCHEMA public IS 'standard public schema';
 
 
-pg_dump: creating TABLE "public.attempt"
+pg_dump: creating TABLE "attempt"
 SET default_tablespace = '';
 
 SET default_table_access_method = heap;
@@ -97,7 +97,7 @@ SET default_table_access_method = heap;
 -- Name: attempt; Type: TABLE; Schema: public; Owner: postgres
 --
 
-CREATE TABLE public.attempt (
+CREATE TABLE attempt (
     attid integer NOT NULL,
     regno character varying(10) NOT NULL,
     testid integer,
@@ -107,15 +107,15 @@ CREATE TABLE public.attempt (
 );
 
 
-ALTER TABLE public.attempt OWNER TO postgres;
+ALTER TABLE attempt OWNER TO postgres;
 
-pg_dump: creating TABLE "public.options"
+pg_dump: creating TABLE "options"
 --
 -- TOC entry 219 (class 1259 OID 16404)
 -- Name: options; Type: TABLE; Schema: public; Owner: postgres
 --
 
-CREATE TABLE public.options (
+CREATE TABLE options (
     oid integer NOT NULL,
     qid integer,
     option text,
@@ -123,15 +123,15 @@ CREATE TABLE public.options (
 );
 
 
-ALTER TABLE public.options OWNER TO postgres;
+ALTER TABLE options OWNER TO postgres;
 
-pg_dump: creating TABLE "public.question"
+pg_dump: creating TABLE "question"
 --
 -- TOC entry 216 (class 1259 OID 16389)
 -- Name: question; Type: TABLE; Schema: public; Owner: postgres
 --
 
-CREATE TABLE public.question (
+CREATE TABLE question (
     qid integer NOT NULL,
     question text,
     answer integer,
@@ -139,15 +139,15 @@ CREATE TABLE public.question (
 );
 
 
-ALTER TABLE public.question OWNER TO postgres;
+ALTER TABLE question OWNER TO postgres;
 
-pg_dump: creating SEQUENCE "public.question_qid_seq"
+pg_dump: creating SEQUENCE "question_qid_seq"
 --
 -- TOC entry 215 (class 1259 OID 16388)
 -- Name: question_qid_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
-CREATE SEQUENCE public.question_qid_seq
+CREATE SEQUENCE question_qid_seq
     AS integer
     START WITH 1
     INCREMENT BY 1
@@ -156,25 +156,25 @@ CREATE SEQUENCE public.question_qid_seq
     CACHE 1;
 
 
-ALTER SEQUENCE public.question_qid_seq OWNER TO postgres;
+ALTER SEQUENCE question_qid_seq OWNER TO postgres;
 
-pg_dump: creating SEQUENCE OWNED BY "public.question_qid_seq"
+pg_dump: creating SEQUENCE OWNED BY "question_qid_seq"
 --
 -- TOC entry 3390 (class 0 OID 0)
 -- Dependencies: 215
 -- Name: question_qid_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
-ALTER SEQUENCE public.question_qid_seq OWNED BY public.question.qid;
+ALTER SEQUENCE question_qid_seq OWNED BY question.qid;
 
 
-pg_dump: creating TABLE "public.result"
+pg_dump: creating TABLE "result"
 --
 -- TOC entry 222 (class 1259 OID 16424)
 -- Name: result; Type: TABLE; Schema: public; Owner: postgres
 --
 
-CREATE TABLE public.result (
+CREATE TABLE result (
     rid integer NOT NULL,
     testid integer NOT NULL,
     regno character varying(10),
@@ -183,29 +183,29 @@ CREATE TABLE public.result (
 );
 
 
-ALTER TABLE public.result OWNER TO postgres;
+ALTER TABLE result OWNER TO postgres;
 
-pg_dump: creating TABLE "public.student"
+pg_dump: creating TABLE "student"
 --
 -- TOC entry 220 (class 1259 OID 16414)
 -- Name: student; Type: TABLE; Schema: public; Owner: postgres
 --
 
-CREATE TABLE public.student (
+CREATE TABLE student (
     regno character varying(10) NOT NULL,
     studentname character varying(200)
 );
 
 
-ALTER TABLE public.student OWNER TO postgres;
+ALTER TABLE student OWNER TO postgres;
 
-pg_dump: creating TABLE "public.test"
+pg_dump: creating TABLE "test"
 --
 -- TOC entry 218 (class 1259 OID 16398)
 -- Name: test; Type: TABLE; Schema: public; Owner: postgres
 --
 
-CREATE TABLE public.test (
+CREATE TABLE test (
     testid integer NOT NULL,
     course character varying(200),
     total integer,
@@ -220,15 +220,15 @@ CREATE TABLE public.test (
 );
 
 
-ALTER TABLE public.test OWNER TO postgres;
+ALTER TABLE test OWNER TO postgres;
 
-pg_dump: creating SEQUENCE "public.test_testid_seq"
+pg_dump: creating SEQUENCE "test_testid_seq"
 --
 -- TOC entry 217 (class 1259 OID 16397)
 -- Name: test_testid_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
-CREATE SEQUENCE public.test_testid_seq
+CREATE SEQUENCE test_testid_seq
     AS integer
     START WITH 1
     INCREMENT BY 1
@@ -237,34 +237,34 @@ CREATE SEQUENCE public.test_testid_seq
     CACHE 1;
 
 
-ALTER SEQUENCE public.test_testid_seq OWNER TO postgres;
+ALTER SEQUENCE test_testid_seq OWNER TO postgres;
 
-pg_dump: creating SEQUENCE OWNED BY "public.test_testid_seq"
+pg_dump: creating SEQUENCE OWNED BY "test_testid_seq"
 --
 -- TOC entry 3391 (class 0 OID 0)
 -- Dependencies: 217
 -- Name: test_testid_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
-ALTER SEQUENCE public.test_testid_seq OWNED BY public.test.testid;
+ALTER SEQUENCE test_testid_seq OWNED BY test.testid;
 
 
-pg_dump: creating DEFAULT "public.question qid"
+pg_dump: creating DEFAULT "question qid"
 --
 -- TOC entry 3224 (class 2604 OID 16392)
 -- Name: question qid; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public.question ALTER COLUMN qid SET DEFAULT nextval('public.question_qid_seq'::regclass);
+ALTER TABLE ONLY question ALTER COLUMN qid SET DEFAULT nextval('question_qid_seq'::regclass);
 
 
-pg_dump: creating DEFAULT "public.test testid"
+pg_dump: creating DEFAULT "test testid"
 --
 -- TOC entry 3225 (class 2604 OID 16401)
 -- Name: test testid; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public.test ALTER COLUMN testid SET DEFAULT nextval('public.test_testid_seq'::regclass);
+ALTER TABLE ONLY test ALTER COLUMN testid SET DEFAULT nextval('test_testid_seq'::regclass);
 
 
 --
@@ -273,8 +273,8 @@ ALTER TABLE ONLY public.test ALTER COLUMN testid SET DEFAULT nextval('public.tes
 -- Data for Name: attempt; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-pg_dump: processing data for table "public.attempt"
-INSERT INTO public.attempt VALUES
+pg_dump: processing data for table "attempt"
+INSERT INTO attempt VALUES
 	(329, '1732102', 14, 0, '6,20,23,10,32,12,0,27,39,19,5,29,11,36,31,17,8,4,13,9,22,34,25,3,1,7,26,21,15,28,2,37,16,18,35,24,30,14,38,33', NULL),
 	(330, '1612103', 14, 0, '10,19,39,1,11,8,22,9,4,31,5,14,37,13,15,18,36,23,35,29,34,27,26,2,30,6,17,7,25,38,20,3,24,12,33,16,32,28,0,21', NULL),
 	(333, '1812111', 14, 0, '4,12,24,16,2,36,31,27,5,22,33,29,8,1,38,11,14,34,28,25,3,39,19,9,17,21,32,6,20,7,13,37,23,30,10,18,26,15,0,35', NULL),
@@ -434,8 +434,8 @@ INSERT INTO public.attempt VALUES
 -- Data for Name: options; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-pg_dump: processing data for table "public.options"
-INSERT INTO public.options VALUES
+pg_dump: processing data for table "options"
+INSERT INTO options VALUES
 	(1398, 561, 'serial', 1),
 	(1399, 561, 'parallel', 2),
 	(1400, 562, 'True', 1),
@@ -528,8 +528,8 @@ INSERT INTO public.options VALUES
 -- Data for Name: question; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-pg_dump: processing data for table "public.question"
-INSERT INTO public.question VALUES
+pg_dump: processing data for table "question"
+INSERT INTO question VALUES
 	(561, 'qestions are hidden text no - 561', 1, 14),
 	(562, 'qestions are hidden text no - 562', 1, 14),
 	(563, 'qestions are hidden text no - 563', 1, 14),
@@ -578,8 +578,8 @@ INSERT INTO public.question VALUES
 -- Data for Name: result; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-pg_dump: processing data for table "public.result"
-INSERT INTO public.result VALUES
+pg_dump: processing data for table "result"
+INSERT INTO result VALUES
 	(15402, 14, '1732102', 567, 3),
 	(15403, 14, '1732102', 581, 1),
 	(15404, 14, '1732102', 584, 1),
@@ -6313,8 +6313,8 @@ INSERT INTO public.result VALUES
 -- Data for Name: student; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-pg_dump: processing data for table "public.student"
-INSERT INTO public.student VALUES
+pg_dump: processing data for table "student"
+INSERT INTO student VALUES
 	('1612103', 'Ahsan Iftikhar'),
 	('1612117', 'Maryam Liaquat'),
 	('1612134', 'Syed Shujjat Ali Rizvi'),
@@ -7467,8 +7467,8 @@ INSERT INTO public.student VALUES
 -- Data for Name: test; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-pg_dump: processing data for table "public.test"
-INSERT INTO public.test VALUES
+pg_dump: processing data for table "test"
+INSERT INTO test VALUES
 	(1, 'Web Technology II', 40, 'DEB35', '2019-06-01 00:00:00', 60, 'Asim Riaz', 'Spring 2019', 'Test 1', 'BS VI ', 0.5),
 	(2, 'Web Technology II', 80, 'E32RN', '2019-06-12 00:00:00', 90, 'Asim Riaz', 'Spring 2019', 'Final', 'BS VI E/F', 0.5),
 	(3, 'OOP', 20, '1AJAZ', '2019-06-09 00:00:00', 2, 'Asim Riaz', 'Spring 2019', 'Test', 'BS II', 1),
@@ -7513,7 +7513,7 @@ pg_dump: executing SEQUENCE SET question_qid_seq
 -- Name: question_qid_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.question_qid_seq', 1, false);
+SELECT pg_catalog.setval('question_qid_seq', 1, false);
 
 
 pg_dump: executing SEQUENCE SET test_testid_seq
@@ -7523,47 +7523,47 @@ pg_dump: executing SEQUENCE SET test_testid_seq
 -- Name: test_testid_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.test_testid_seq', 1, false);
+SELECT pg_catalog.setval('test_testid_seq', 1, false);
 
 
-pg_dump: creating CONSTRAINT "public.question question_pkey"
+pg_dump: creating CONSTRAINT "question question_pkey"
 --
 -- TOC entry 3227 (class 2606 OID 16396)
 -- Name: question question_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public.question
+ALTER TABLE ONLY question
     ADD CONSTRAINT question_pkey PRIMARY KEY (qid);
 
 
-pg_dump: creating CONSTRAINT "public.student student_pkey"
+pg_dump: creating CONSTRAINT "student student_pkey"
 --
 -- TOC entry 3231 (class 2606 OID 16418)
 -- Name: student student_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public.student
+ALTER TABLE ONLY student
     ADD CONSTRAINT student_pkey PRIMARY KEY (regno);
 
 
-pg_dump: creating CONSTRAINT "public.test test_pkey"
+pg_dump: creating CONSTRAINT "test test_pkey"
 --
 -- TOC entry 3229 (class 2606 OID 16403)
 -- Name: test test_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public.test
+ALTER TABLE ONLY test
     ADD CONSTRAINT test_pkey PRIMARY KEY (testid);
 
 
-pg_dump: creating FK CONSTRAINT "public.options options_qid_fkey"
+pg_dump: creating FK CONSTRAINT "options options_qid_fkey"
 --
 -- TOC entry 3232 (class 2606 OID 16409)
 -- Name: options options_qid_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public.options
-    ADD CONSTRAINT options_qid_fkey FOREIGN KEY (qid) REFERENCES public.question(qid);
+ALTER TABLE ONLY options
+    ADD CONSTRAINT options_qid_fkey FOREIGN KEY (qid) REFERENCES question(qid);
 
 
 -- Completed on 2024-09-04 01:38:54 UTC
