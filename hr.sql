@@ -65,6 +65,12 @@ CREATE TABLE job_history
     , PRIMARY KEY (employee_id, start_date)
     ) ;
 
+CREATE TABLE job_grades 
+    (grade 		CHAR(1),
+    lowest_sal 	NUMBER(8,2) NOT NULL,
+    highest_sal	NUMBER(8,2) NOT NULL
+    );
+
 --populate tables
 INSERT INTO regions VALUES ( 1,'Europe');
 INSERT INTO regions VALUES ( 2,'Americas');
@@ -283,6 +289,7 @@ INSERT INTO employees VALUES ( 204,'Hermann','Baer','HBAER','515.123.8888',TO_DA
 INSERT INTO employees VALUES ( 205,'Shelley','Higgins','SHIGGINS','515.123.8080',TO_DATE('07-JUN-1994', 'dd-MON-yyyy'),'AC_MGR',12000,NULL,101,110);
 INSERT INTO employees VALUES ( 206,'William','Gietz','WGIETZ','515.123.8181',TO_DATE('07-JUN-1994', 'dd-MON-yyyy'),'AC_ACCOUNT',8300,NULL,205,110);
 
+-- job_history
 INSERT INTO job_history VALUES (102,TO_DATE('13-JAN-1993', 'dd-MON-yyyy'),TO_DATE('24-JUL-1998', 'dd-MON-yyyy'),'IT_PROG',60);
 INSERT INTO job_history VALUES (101,TO_DATE('21-SEP-1989', 'dd-MON-yyyy'),TO_DATE('27-OCT-1993', 'dd-MON-yyyy'),'AC_ACCOUNT',110);
 INSERT INTO job_history VALUES (101,TO_DATE('28-OCT-1993', 'dd-MON-yyyy'),TO_DATE('15-MAR-1997', 'dd-MON-yyyy'),'AC_MGR',110);
@@ -294,9 +301,20 @@ INSERT INTO job_history VALUES (176,TO_DATE('24-MAR-1998', 'dd-MON-yyyy'),TO_DAT
 INSERT INTO job_history VALUES (176,TO_DATE('01-JAN-1999', 'dd-MON-yyyy'),TO_DATE('31-DEC-1999', 'dd-MON-yyyy'),'SA_MAN',80);
 INSERT INTO job_history VALUES (200,TO_DATE('01-JUL-1994', 'dd-MON-yyyy'),TO_DATE('31-DEC-1998', 'dd-MON-yyyy'),'AC_ACCOUNT',90);
 
+-- job_grades
+INSERT INTO job_grades VALUES ('A', 1000, 2999);
+INSERT INTO job_grades VALUES ('B', 3000, 5999);
+INSERT INTO job_grades VALUES ('C', 6000, 9999);
+INSERT INTO job_grades VALUES ('D', 10000, 14999);
+INSERT INTO job_grades VALUES ('E', 15000, 24999);
+INSERT INTO job_grades VALUES ('F', 25000, 40000);
+
 ALTER TABLE DEPARTMENTS ADD CONSTRAINT dept_mgr_fk
                  FOREIGN KEY (manager_id)
                   REFERENCES employees (employee_id);
+
+ALTER TABLE job_grades
+ADD CONSTRAINT jobgrades_grade_pk PRIMARY KEY (grade);
 
 --create indexes
 CREATE INDEX emp_department_ix
