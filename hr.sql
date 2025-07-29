@@ -67,8 +67,8 @@ CREATE TABLE job_history
 
 CREATE TABLE job_grades 
     (grade 		CHAR(1),
-    lowest_sal 	NUMBER(8,2) NOT NULL,
-    highest_sal	NUMBER(8,2) NOT NULL
+    lowest_sal 	NUMERIC(8,2) NOT NULL,
+    highest_sal	NUMERIC(8,2) NOT NULL
     );
 
 --populate tables
